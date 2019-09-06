@@ -8,8 +8,8 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update
 RUN apt install default-jdk wget unzip git -y
-RUN wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
-RUN unzip sdk-tools-linux-4333796.zip -d /opt/android
+RUN wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -qO android-sdk.zip
+RUN unzip android-sdk.zip -d /opt/android
 RUN rm android-sdk.zip
   
 RUN echo "y" | sdkmanager --update \
