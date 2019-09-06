@@ -7,7 +7,7 @@ ENV PATH "$PATH:${ANDROID_HOME}/tools"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update
-RUN apt install default-jdk
+RUN apt install default-jdk wget unzip git -y
 RUN wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
 RUN unzip sdk-tools-linux-4333796.zip -d /opt/android
 RUN rm android-sdk.zip
