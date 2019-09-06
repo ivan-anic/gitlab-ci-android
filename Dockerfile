@@ -7,10 +7,10 @@ ENV PATH "$PATH:${ANDROID_HOME}/tools"
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update \
-  && apt install default-jdk \
-  && wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip \
-  && unzip sdk-tools-linux-4333796.zip -d /opt/android \
-  && rm android-sdk.zip
+RUN apt install default-jdk
+RUN wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip
+RUN unzip sdk-tools-linux-4333796.zip -d /opt/android
+RUN rm android-sdk.zip
   
 RUN echo "y" | sdkmanager --update \
   && echo "y" | sdkmanager --licenses \
