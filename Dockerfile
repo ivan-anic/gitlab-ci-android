@@ -7,16 +7,16 @@ ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update
-RUN apt install default-jdk wget unzip git -y
+RUN apt install openjdk-8-jdk wget unzip git -y
 RUN wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -qO android-sdk.zip
 RUN unzip android-sdk.zip -d /opt/android
 RUN rm android-sdk.zip
   
-RUN echo "y" | sdkmanager --update \
-  && echo "y" | sdkmanager --licenses \
+RUN echo "y" | sdkmanager  "platform-tools" \
   && echo "y" | sdkmanager "system-images;android-25;google_apis;armeabi-v7a" \
   && echo "y" | sdkmanager "emulator" \
-  && echo "y" | sdkmanager "platform-tools"
+  && echo "y" | sdkmanager --licenses \
+  && echo "y" | sdkmanager --update
   
 RUN touch /home/ubuntu/.android/repositories.cfg \
   && mkdir /opt/android-sdk/platforms \
