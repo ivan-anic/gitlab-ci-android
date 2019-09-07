@@ -18,5 +18,5 @@ RUN echo "y" | sdkmanager  "platform-tools" \
   && echo "y" | sdkmanager --licenses \
   && echo "y" | sdkmanager --update
 #touch /home/ubuntu/.android/repositories.cfg \
-RUN mkdir /opt/android-sdk/platforms \
-  && echo "no" | avdmanager -v create avd -f -n MyAVD -k "system-images;android-25;google_apis;armeabi-v7a" -p "/opt/android-sdk/avd"
+#mkdir /opt/android-sdk/platforms \
+RUN echo "no" | avdmanager -v create avd -f -n MyAVD -k "system-images;android-25;google_apis;armeabi-v7a" -p "/opt/android-sdk/avd"
