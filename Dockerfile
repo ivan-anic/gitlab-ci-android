@@ -3,7 +3,8 @@ FROM ubuntu:18.04
 ENV VERSION_SDK_TOOLS "3859397"
 
 ENV ANDROID_HOME "/opt/android"
-ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+ENV ANDROID_SDK_ROOT="/opt/android-sdk"
+ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:$ANDROID_SDK_ROOT/tools
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt update
