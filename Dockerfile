@@ -7,11 +7,14 @@ ENV ANDROID_SDK_ROOT="/opt/android-sdk"
 ENV PATH ${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools:$ANDROID_SDK_ROOT/tools
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt update
-#need ruby for bundler
-RUN apt install -y ruby
-#need bundler to use fastlane
-RUN gem install bundler
+RUN apt update \
+  #need ruby for bundler
+  && apt install -y ruby \
+  #need bundler to use fastlane
+  && gem install bundler \
+  && apt install build-essential -y \
+  && gem update --system \
+  && apt install ruby-dev -y
 
 RUN apt install openjdk-8-jdk wget unzip git -y
 RUN wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -qO android-sdk.zip
